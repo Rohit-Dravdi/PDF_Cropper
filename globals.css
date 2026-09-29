@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fbfbfd;
+  --card: #ffffff;
+  --ink: #101828;
+  --mut: #5b6478;
+  --line: #e2e5ee;
+  --brand: #0f766e;
+  --brand-ink: #ffffff;
+  --mark: #facc15;
+  --danger: #b42318;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --card: #151b26;
+    --ink: #eef1f7;
+    --mut: #96a0b5;
+    --line: #263041;
+    --brand: #2dd4bf;
+    --brand-ink: #062b28;
+    --danger: #f97066;
+  }
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+.muted { color: var(--mut); }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
+.btn {
+  background: var(--brand); color: var(--brand-ink); border: 0; border-radius: 6px;
+  padding: 11px 20px; font-weight: 700; cursor: pointer; font-size: 15px;
+}
+.btn:disabled { opacity: .55; cursor: wait; }
+.btn-quiet { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.input {
+  width: 100%; background: var(--bg); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 6px; padding: 9px 10px; font: inherit;
+}
+.drop {
+  display: block; border: 2px dashed var(--line); border-radius: 6px; padding: 36px 16px;
+  text-align: center; cursor: pointer; transition: border-color .15s, background .15s;
+}
+.drop:hover, .drop.hot { border-color: var(--brand); background: color-mix(in srgb, var(--brand) 7%, transparent); }
+.tool-row { display: flex; gap: 14px; padding: 14px 4px; border-bottom: 1px solid var(--line); transition: background .15s; }
+.tool-row:hover { background: color-mix(in srgb, var(--mark) 14%, transparent); }
+.thumb { position: relative; overflow: hidden; border: 1px solid var(--line); background: #fff; border-radius: 3px; }
+.thumb img { display: block; width: 100%; height: auto; }
+.thumb span { position: absolute; right: 3px; bottom: 3px; background: rgba(0,0,0,.7); color: #fff; font-size: 11px; padding: 0 5px; border-radius: 6px; }
+.crop-mask { position: absolute; box-shadow: 0 0 0 999px rgba(0,0,0,.5); outline: 2px dashed var(--mark); pointer-events: none; }
